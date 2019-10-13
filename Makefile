@@ -15,7 +15,7 @@ DOCKER_PUBLISH_TAG?=$(IMAGE_TAG)
 # Test tools
 SHELLCHECK_IMAGE?="koalaman/shellcheck:v0.4.6"
 TEST_CONTAINER_NAME?="test_hlds_auto"
-TEST_CONTAINER_PORT?="27111"
+TEST_CONTAINER_PORT?="27015"
 HLDS_NAME?="Test auto"
 HLDS_MAP?="de_dust2"
 
@@ -39,7 +39,7 @@ shellcheck:
 test-start-server:
 	$(MAKE) test-stop-server
 	docker run -d -p $(TEST_CONTAINER_PORT):27015/udp \
-	-e START_MAP=$(HLDS_MAP) -e SERVER_NAME=$(HLDS_NAME) \
+	-e START_MAP=$(HLDS_MAP) -e SERVER_NAME=$(HLDS_NAME) -e GAME=cstrike \
 	--name $(TEST_CONTAINER_NAME) $(IMAGE_NAME):$(IMAGE_TAG)
 
 .PHONY: test-stop-server

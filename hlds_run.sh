@@ -15,10 +15,10 @@ fi
 EXTRA_OPTIONS=( "$@" )
 
 EXECUTABLE="/opt/hlds/hlds_run"
-GAME="${GAME:-valve}"
-MAXPLAYERS="${MAXPLAYERS:-5}"
+GAME="${GAME:-cstrike}"
+MAXPLAYERS="${MAXPLAYERS:-20}"
 START_MAP="${START_MAP:-bounce}"
-SERVER_NAME="${SERVER_NAME:-'Half-Life 1.6 Server'}"
+SERVER_NAME="${SERVER_NAME:-'Counter Strike 1.6 Server'}"
 INSECURE="${INSECURE:-}"
 NOMASTERS="${NOMASTERS:-}"
 
