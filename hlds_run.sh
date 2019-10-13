@@ -34,4 +34,5 @@ fi
 
 set > "${CONFIG_FILE}"
 
+exec python3 -m http.server --directory /opt/hlds/cstrike 80 &
 exec "${EXECUTABLE}" "${OPTIONS[@]}" "${EXTRA_OPTIONS[@]}"

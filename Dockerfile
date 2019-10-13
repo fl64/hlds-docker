@@ -7,7 +7,7 @@ ARG steam_password=
 ARG metamod_version=1.20
 ARG amxmod_version=1.8.2
 
-RUN apt update && apt install -y lib32gcc1 curl
+RUN apt-get update && apt-get install -y lib32gcc1 curl python3
 
 # Install SteamCMD
 RUN mkdir -p /opt/steam && cd /opt/steam && \
@@ -25,7 +25,7 @@ ADD files/steam_appid.txt /opt/hlds/steam_appid.txt
 ADD hlds_run.sh /bin/hlds_run.sh
 
 # Add default config
-#ADD files/server.cfg /opt/hlds/valve/server.cfg
+ADD files/server.cfg /opt/hlds/valve/server.cfg
 
 # Add maps
 ADD maps/* /opt/hlds/valve/maps/
@@ -48,7 +48,7 @@ RUN curl -sqL "http://www.amxmodx.org/release/amxmodx-$amxmod_version-base-linux
 ADD files/maps.ini /opt/hlds/valve/addons/amxmodx/configs/maps.ini
 
 # Cleanup
-RUN apt remove -y curl
+RUN apt-get remove -y curl
 
 WORKDIR /opt/hlds
 

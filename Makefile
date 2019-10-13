@@ -6,7 +6,7 @@ IMAGE_TAG?="latest"
 STEAM_USER?="anonymous"
 STEAM_PASSWORD?=""
 
-DOCKER_NO_CACHE?="false"
+DOCKER_NO_CACHE?="true"
 
 # Publish options
 DOCKER_PUBLISH_NAME?="thillux/hlds"
@@ -18,6 +18,7 @@ TEST_CONTAINER_NAME?="test_hlds_auto"
 TEST_CONTAINER_PORT?="27015"
 HLDS_NAME?="Test auto"
 HLDS_MAP?="de_dust2"
+TEST_WEB_PORT?="80"
 
 .PHONY: build
 build:
@@ -38,7 +39,7 @@ shellcheck:
 .PHONY: test-start-server
 test-start-server:
 	$(MAKE) test-stop-server
-	docker run -d -p $(TEST_CONTAINER_PORT):27015/udp \
+	docker run -d -p $(TEST_CONTAINER_PORT):27015/udp -p $(TEST_WEB_PORT):80/tcp \
 	-e START_MAP=$(HLDS_MAP) -e SERVER_NAME=$(HLDS_NAME) -e GAME=cstrike \
 	--name $(TEST_CONTAINER_NAME) $(IMAGE_NAME):$(IMAGE_TAG)
 
