@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 
 LABEL maintainer "Tomas Adomavicius <tomas@adomavicius.com>"
 
@@ -16,7 +16,7 @@ RUN mkdir -p /opt/steam && cd /opt/steam && \
 # Install HLDS
 RUN mkdir -p /opt/hlds
 # Workaround for "app_update 90" bug, see https://forums.alliedmods.net/showthread.php?p=2518786
-RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit || \ 
+RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit || \
     /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit
 RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 70 validate +quit || :
 RUN mkdir -p ~/.steam && ln -s /opt/hlds ~/.steam/sdk32
