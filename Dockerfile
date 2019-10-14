@@ -29,23 +29,7 @@ ADD files/server.cfg /opt/hlds/valve/server.cfg
 
 # Add maps
 ADD maps/* /opt/hlds/valve/maps/
-#ADD files/mapcycle.txt /opt/hlds/valve/mapcycle.txt
-
-# Install metamod
-RUN mkdir -p /opt/hlds/valve/addons/metamod/dlls
-RUN curl -sqL "http://prdownloads.sourceforge.net/metamod/metamod-$metamod_version-linux.tar.gz?download" | tar -C /opt/hlds/valve/addons/metamod/dlls -zxvf -
-ADD files/liblist.gam /opt/hlds/valve/liblist.gam
-# Remove this line if you aren't going to install/use amxmodx and dproto
-ADD files/plugins.ini /opt/hlds/valve/addons/metamod/plugins.ini
-
-# Install dproto
-RUN mkdir -p /opt/hlds/calce/addons/dproto
-ADD files/dproto_i386.so /opt/hlds/valve/addons/dproto/dproto_i386.so
-ADD files/dproto.cfg /opt/hlds/valve/dproto.cfg
-
-# Install AMX mod X
-RUN curl -sqL "http://www.amxmodx.org/release/amxmodx-$amxmod_version-base-linux.tar.gz" | tar -C /opt/hlds/valve/ -zxvf -
-ADD files/maps.ini /opt/hlds/valve/addons/amxmodx/configs/maps.ini
+ADD files/mapcycle.txt /opt/hlds/valve/mapcycle.txt
 
 # Cleanup
 RUN apt-get remove -y curl
