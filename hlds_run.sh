@@ -24,14 +24,6 @@ NOMASTERS="${NOMASTERS:-}"
 
 OPTIONS=( "-game" "${GAME}" "+maxplayers" "${MAXPLAYERS}" "+map" "${START_MAP}" "+hostname" "\"${SERVER_NAME}\"" "${INSECURE}" "${NOMASTERS}")
 
-if [ -z "${RESTART_ON_FAIL}" ]; then
-    OPTIONS+=('-norestart')
-fi
-
-if [ -n "${ADMIN_NAME}" ]; then
-    echo "\"${ADMIN_NAME}\" \"${ADMIN_PASS}\"  \"abcdefghijklmnopqrstu\" \"a\"" >> "/opt/hlds/valve/addons/amxmodx/configs/users.ini"
-fi
-
 set > "${CONFIG_FILE}"
 
 exec python3 -m http.server --directory /opt/hlds/cstrike 80 &
