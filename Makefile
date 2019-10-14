@@ -16,7 +16,7 @@ DOCKER_PUBLISH_TAG?=$(IMAGE_TAG)
 SHELLCHECK_IMAGE?="koalaman/shellcheck:v0.4.6"
 TEST_CONTAINER_NAME?="test_hlds_auto"
 TEST_CONTAINER_PORT?="27015"
-HLDS_NAME?="Test auto"
+HLDS_NAME?="Counter-Strike 1.6 Server"
 HLDS_MAP?="de_dust2"
 TEST_WEB_PORT?="80"
 
