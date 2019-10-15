@@ -25,8 +25,8 @@ ADD hlds_run.sh /bin/hlds_run.sh
 # Add default config
 ADD files/server.cfg /opt/hlds/cstrike/server.cfg
 
-# Add maps
-ADD maps/* /opt/hlds/cstrike/maps/
+# Add maps and bots
+ADD cstrike/* /opt/hlds/cstrike/
 ADD files/mapcycle.txt /opt/hlds/cstrike/mapcycle.txt
 
 # Cleanup
