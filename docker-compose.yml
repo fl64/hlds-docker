@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  hlds:
+    image: fl64/hlds
+    restart: always
+    #    build:
+#      context: .
+#      dockerfile: Dockerfile
+    volumes:
+    - ./custom/podbot/podbot.cfg:/opt/hlds/cstrike/addons/podbot/podbot.cfg
+    command:
+    - +log
+    ports:
+      - "26900:26900/udp"
+      - "27020:27020/udp"
+      - "27015:27015"
+      - "27015:27015/udp"
+    environment:
+      - MAXPLAYERS=32
+      - START_MAP=de_dust2
+      - SERVER_NAME="GMCS1.6"
+      - START_MONEY=800
+      - BUY_TIME=0.25
+      - FRIENDLY_FIRE=1
+      - ADMIN_STEAM=0:0:14141414
